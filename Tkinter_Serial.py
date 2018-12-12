@@ -34,9 +34,9 @@ s.open()
 # #self.labelVariable2.set(int(a[1:18]))
 #pyperclip.copy(int(a[2:16]))
 
-while True:
-    a = s.readline() 
-    print(a)
+#while True:
+#    a = s.readline() 
+#    print(a)
     
 #            
 #    #self.labelVariable2.set(int(a[1:18]))
