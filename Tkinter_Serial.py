@@ -55,6 +55,6 @@ while 1:
         w = Text( frameLabel, wrap='word', font="TimesNewRoman 37")
         w.insert(12.0,text )
         w.pack()
-        w.configure( bg=master.cget('bg'), relief='flat', state='Normal' )
+        w.configure( bg=master.cget('bg'), relief='flat')
 
 mainloop()
