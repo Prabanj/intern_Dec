@@ -1,62 +1,60 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 13 18:29:21 2018
+import tkinter
+#import tkinter as tk
+#import pyqrcode
 
-@author: Guest1
-"""
-
-import Tkinter
-import Tkinter as tk
-import pyqrcode
-
-from PIL import Image, ImageTk
-from Tkinter import Tk, Label, BOTH
-from ttk import Frame, Style
+#from PIL import Image, ImageTk
+from tkinter import Tk, Label, BOTH
+#from ttk import Frame, Style
 
 
 
 
-class simpleapp_tk(Tkinter.Tk):
+class simpleapp_tk(tkinter.Tk):
+    
+    
     def __init__(self,parent):
-        Tkinter.Tk.__init__(self,parent)
+        tkinter.Tk.__init__(self,parent)
         self.parent = parent
         self.initialize()
-#        self.minsize(width=466, height=466)
         self.maxsize(width=35000, height=25000)
+        
+        
 
     def initialize(self):
         self.grid()
-        
-        self.entryVariable1 = Tkinter.StringVar()
-        self.entry = Tkinter.Entry(self,textvariable=self.entryVariable1)
+        self.entryVariable1 = tkinter.StringVar()
+        self.entry = tkinter.Entry(self,textvariable=self.entryVariable1)
         self.entry.grid(column=1,row=3,sticky='W')
-        #self.entry.bind("<Return>", self.OnPressEnter)
         self.entryVariable1.set(u"")
         
         
-        button6 = Tkinter.Button(self,text=u"Get as QR",
-                                command=self.OnButtonClick6)
-        button6.grid(column=4,row=28)
+        button = tkinter.Button(self,text=u"Clear",command=self.OnButtonClick)
+        button.grid(column=2,row=4)
+        button2 = tkinter.Button(self,text=u"Copy",command=self.OnButtonClick2)
+        button2.grid(column=3,row=4)
         
         
-        self.labelVariable7 = Tkinter.StringVar()
-        label = Tkinter.Label(self,textvariable=self.labelVariable7,
-                              anchor="w",fg="black",bg="violet", bd = 15)
-        label.grid(column=3,row=0,columnspan=10,sticky='W')
-        self.labelVariable7.set(u"iTitan - A Click Solution for Titan Eye Plus")
+        self.labelVariable2 = tkinter.StringVar()
+        label = tkinter.Label(self,textvariable=self.labelVariable2,anchor="w",fg="white",bg="blue", bd = 15)
+        label.grid(column=1,row=0,sticky='W')
+        self.labelVariable2.set(u"UID Scanner")
         
         
-     def OnButtonClick2(self):
-        #self.labelVariable.set( self.entryVariable.get()+" (clicked sumthin else didncha)" )
+    def OnButtonClick(self):
+
         self.entry.focus_set()
-        self.entry.selection_range(0, Tkinter.END)
+        self.entry.selection_range(0, tkinter.END)
+        self.entry.delete(0,"end")
+
         
+    def OnButtonClick2(self):
+        self.entry.focus_set()
+        self.entry.selection_range(0, tkinter.END)
         
         
         
 if __name__ == "__main__":  
     
     app = simpleapp_tk(None) 
-    
-    app.title('iTitan')
+    app.title('UID Scanner')
     app.mainloop()
