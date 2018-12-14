@@ -1,15 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 13 19:02:29 2018
 
-@author: Admin
-"""
-import serial
+#import serial
 import tkinter
+
 #import tkinter as tk
 #import pyqrcode
 
-#from PIL import Image, ImageTk
+from PIL import Image, ImageTk
 from tkinter import Tk, Label, BOTH
 #from ttk import Frame, Style
 
@@ -21,30 +17,37 @@ class simpleapp_tk(tkinter.Tk):
     def __init__(self,parent):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
+
         self.initialize()
         self.maxsize(width=35000, height=25000)
         
         
 
     def initialize(self):
+
         self.grid()
+        
+        self.img = ImageTk.PhotoImage(Image.open('C:/Users/Guest1/Downloads/logo.jpg'))
+        self.panel = tkinter.Label(image = self.img)
+        self.panel.grid(row=0, column=0, columnspan=5)
+        
         self.entryVariable1 = tkinter.StringVar()
         self.entry = tkinter.Entry(self,textvariable=self.entryVariable1)
-        self.entry.grid(column=1,row=3,sticky='W')
+        self.entry.grid(row=3, column=0, columnspan=2)
         
         
         
         button = tkinter.Button(self,text=u"Scan",command=self.OnButtonClick)
-        button.grid(column=2,row=4)
+        button.grid(row=3, column=2)
         #self.initialize()
         button2 = tkinter.Button(self,text=u"Clear",command=self.OnButtonClick2)
-        button2.grid(column=3,row=4)
+        button2.grid(row=3, column=3)
         
         
         self.labelVariable2 = tkinter.StringVar()
-        label = tkinter.Label(self,textvariable=self.labelVariable2,anchor="w",fg="white",bg="blue", bd = 15)
-        label.grid(column=1,row=0,sticky='W')
-        self.labelVariable2.set(u"UID Scanner")
+        label = tkinter.Label(self,textvariable=self.labelVariable2,anchor="w",font="Corbel 15",fg="black", bg="white",height =0, bd = 4, justify="center")
+        label.grid(row=2,column=0,columnspan =5)
+        self.labelVariable2.set(u"UID Number")
         
         
     def OnButtonClick2(self):
@@ -56,17 +59,20 @@ class simpleapp_tk(tkinter.Tk):
        
         
     def OnButtonClick(self):
-        self.s= serial.Serial()
-        self.s.port = 'COM10'
-        self.s.open()
-        self.entryVariable1.set(self.s.readline())
-        
+#        self.s= serial.Serial()
+#        self.s.port = 'COM10'
+#        self.s.open()
+#        self.entryVariable1.set(self.s.readline())
+        print('a')
         
       
+
 if __name__ == "__main__":  
     
     app = simpleapp_tk(None)
     app.title('UID Scanner')
+    app.configure(bg='#fff')
+
 #    if s.readline():
 #        simpleapp_tk(None)
     app.mainloop()
