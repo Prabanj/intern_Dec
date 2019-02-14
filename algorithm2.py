@@ -34,7 +34,7 @@ while(True):
            matrices = img.find_datamatrices()
            for matrix in matrices:
                img.draw_rectangle(matrix.rect(), color = (255, 0, 0))
-               myImage= image.Image("download.ppm", copy_to_fb = True)
+               myImage= image.Image("indication.ppm", copy_to_fb = True)
                lcd.display(myImage)
                print(matrix.payload())
                blue_led.on()
@@ -45,7 +45,7 @@ while(True):
                qcode=img.find_qrcodes();
                for code in qcode:
                        img.draw_rectangle(code.rect(), color = (255, 0, 0))
-                       myImage= image.Image("download.ppm", copy_to_fb = True)
+                       myImage= image.Image("indication.ppm", copy_to_fb = True)
                        lcd.display(myImage)
                        print(code.payload())
                        blue_led.on()
@@ -55,7 +55,7 @@ while(True):
                  bcode=img.find_barcodes();
                  for code in bcode:
                        img.draw_rectangle(code.rect(), color = (255, 0, 0))
-                       myImage= image.Image("download.ppm", copy_to_fb = True)
+                       myImage= image.Image("indication.ppm", copy_to_fb = True)
                        lcd.display(myImage)
                        print(code.payload())
                        blue_led.on()
