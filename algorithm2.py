@@ -15,7 +15,7 @@ while(True):
       led.high()
 
       sensor.reset()
-      sensor.set_pixformat(sensor.GRAYSCALE)
+      sensor.set_pixformat(sensor.RGB565)
       sensor.set_framesize(sensor.VGA)
 
       #lcd.set_backlight(True)
@@ -34,22 +34,29 @@ while(True):
            matrices = img.find_datamatrices()
            for matrix in matrices:
                img.draw_rectangle(matrix.rect(), color = (255, 0, 0))
+               myImage= image.Image("download.ppm", copy_to_fb = True)
+               lcd.display(myImage)
                print(matrix.payload())
                blue_led.on()
                pyb.delay(500)
                blue_led.off()
+
            if not matrices:
                qcode=img.find_qrcodes();
                for code in qcode:
                        img.draw_rectangle(code.rect(), color = (255, 0, 0))
+                       myImage= image.Image("download.ppm", copy_to_fb = True)
+                       lcd.display(myImage)
                        print(code.payload())
                        blue_led.on()
                        pyb.delay(500)
                        blue_led.off()
-           if not qcode:
-               bcode=img.find_barcodes();
-               for code in bcode:
+               if not qcode:
+                 bcode=img.find_barcodes();
+                 for code in bcode:
                        img.draw_rectangle(code.rect(), color = (255, 0, 0))
+                       myImage= image.Image("download.ppm", copy_to_fb = True)
+                       lcd.display(myImage)
                        print(code.payload())
                        blue_led.on()
                        pyb.delay(500)
@@ -58,10 +65,9 @@ while(True):
 
 
 
+
   else:
       led.low()
       lcd.set_backlight(False)
       #lcd.deinit()
       #sensor.sleep(True)
-
-
